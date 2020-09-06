@@ -16,7 +16,7 @@ export class ErrorInterceptor implements HttpInterceptor {
                     return throwError(err.statusText);
                 }
 
-                // all error logic goes here
+                // you can handle other error statuses as well like above. Also can redirect back to login for a particular error.
             })
         );
     }

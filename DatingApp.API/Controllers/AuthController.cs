@@ -57,7 +57,7 @@ namespace DatingApp.API.Controllers
                 new Claim(ClaimTypes.NameIdentifier, userFromRepo.Id.ToString()),
                 new Claim(ClaimTypes.Name, userFromRepo.UserName)
 
-            };
+            }; // The claims contains the user id and name.
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config.GetSection("AppSettings:Token").Value));
 
@@ -68,7 +68,7 @@ namespace DatingApp.API.Controllers
                 Subject = new ClaimsIdentity(claims),
                 Expires = DateTime.Now.AddDays(1),
                 SigningCredentials = creds
-            };
+            }; // Generating the token based on the claims, signed with a secure key. This key is used to authenticate when this is sent back from client in further requests
 
             var tokenHandler = new JwtSecurityTokenHandler();
 
@@ -78,7 +78,7 @@ namespace DatingApp.API.Controllers
 
             return Ok(new
             {
-                token = tokenHandler.WriteToken(token),
+                token = tokenHandler.WriteToken(token), // Pass the token to the client
                 user
             });
 

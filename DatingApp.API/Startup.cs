@@ -79,8 +79,8 @@ namespace DatingApp.API
                         var error = context.Features.Get<IExceptionHandlerFeature>();
                         if (error != null)
                         {
-                            context.Response.AddApplicationError(error.Error.Message); // Our Extension method
-                            await context.Response.WriteAsync(error.Error.Message);
+                            context.Response.AddApplicationError(error.Error.Message); // Our Extension method that adds error information to the response
+                            await context.Response.WriteAsync(error.Error.Message); // This is caught by the Angular interceptor and handled at the client side
                         }
                     });
                 });
@@ -89,15 +89,16 @@ namespace DatingApp.API
 
             app.UseHttpsRedirection();
 
-            app.UseRouting();
+            app.UseRouting(); // This is Web Api routing
 
-            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()); // Basically opens requests from any origin.
 
             app.UseAuthentication();
 
             app.UseAuthorization();
 
             app.UseDefaultFiles(); // looks for and loads the index.html
+
             app.UseStaticFiles(); // looks for angular files in wwwroot folder
 
             app.UseEndpoints(endpoints =>

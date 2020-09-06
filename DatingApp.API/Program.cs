@@ -37,7 +37,7 @@ namespace DatingApp.API
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>();
+                    webBuilder.UseStartup<Startup>(); // Calls code in Startup.cs 
                 });
     }
 }

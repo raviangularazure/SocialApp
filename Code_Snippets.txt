@@ -1,15 +1,32 @@
-Pre-requisites: 
+Section 1: Prequisities
 .Net Core 3.0 SDK (dotnet --info and dotnet --version)
 NodeJS for running Angular app and NPM for packagement management (Latest LTS version node --version and npm --version)
 Visual Studio code for development of application (its free and its cross-platform)
+Git - Create a new repository and push all changes to it (https://github.com/raviangularazure/SocialApp)
+
+Postman - To test the APIs and also to debug and code in each sections.
+
+Section 2: Walking skeleton
+New Web Api project created using dotnet cli (Program.cs and Startup.cs files are important files)
+New Angular project which connects web api (There are default .json files that get created during new angular project creation)
+
+
+Section 3: Server side Security
+Store passwords as password hash and password salt in the Users table
+Repository pattern - A layer of abstraction between controller and database
+AuthController - Implements login functionality of the Social App.
+
+Section 4: Client side security
+Input/Output properties for component communication
+Angular services
+
+Section5: Error handling in server and client side
+Server side - Global error handling and add error messages to response header (added as an extension method)
+Client side - Error handling in Angular side must be generic via HttpInterceptors that handles various types of errors
+such as 400, 500, Custom error headers etc
 
 NGX Bootstrap is being used in place of Jquery (try avoid jquery in an Angular app). 
 Bootswatch is used to theme of the application
-
-Error handling in Angular side must be generic via HttpInterceptors that handles various types of errors
-such as 400, 500, Custom error headers etc
-
-Server side do Global error handling and add error messages to response header (extension method)
 
 Route Resolvers are used to get get initial data for the route so that you don't need to add safe navigation operator
 
@@ -26,6 +43,7 @@ FallbackController - To load angular index.html within API. Even if you see all 
 if you refresh the app page and see network tab you will see only .es2015 files loaded. This is differential loading
 
 ng build --prod - By default uses AOT compilation and precompiles and so Angular compiler is not part of bundled files (reduces size a lot)
+
 Which is pretty cool since its by default AOT compiled when doing ng build --prod
 Make ICC app build via ng build
 
