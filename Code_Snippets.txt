@@ -1,3 +1,8 @@
+To run app:
+
+npm start -> UI project
+dotnet run watch -> Api project
+
 Section 1: Prequisities
 .Net Core 3.0 SDK (dotnet --info and dotnet --version)
 NodeJS for running Angular app and NPM for packagement management (Latest LTS version node --version and npm --version)
